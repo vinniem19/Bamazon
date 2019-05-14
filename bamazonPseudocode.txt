@@ -1,0 +1,140 @@
+Function to have a customer select a product
+
+Function to check inventory of the selected product
+    if product is in inventory, make purchase
+    if out of stock, print "sorry, we are sold out of that product."
+
+Function to make purchase of selected product
+    First, we update the stock_quantity
+    Then, we calculate the total price of item purchased and display it to customer
+
+    Function to end connection to database.
+
+    
+
+put this back in bamazonCust.js
+
+     if (productSelect === 1){
+        checkInventory();
+
+        //makePurchase();
+     } else {
+        endConnection();
+    /*
+    if (productSelect === 1) {
+        checkInventory(id);
+    } else if (productSelect === 2) {
+        checkInventory(id);
+    } else if (productSelect === 3) {
+        checkInventory(id);
+    } else if (productSelect === 4) {
+        checkInventory(id);
+    } else if (productSelect === 5) {
+        checkInventory(id);
+    } else if (productSelect === 6) {
+        checkInventory(id);
+    } else if (productSelect === 7) {
+        checkInventory(id);
+    } else if (productSelect === 8) {
+        checkInventory(id);
+    } else if (productSelect === 9) {
+        checkInventory(id);
+    } else if (productSelect === 10) {
+        checkInventory(id);
+    }
+    */
+});
+
+
+// switch  (productSelect) {
+    //     case 1:
+    //     break;
+    //     case 2:
+    //     break;
+    //     case 3:
+    //     break;
+    //     case 4:
+    //     break;
+    //     case 5:
+    //     break;
+    //     case 6:
+    //     break;
+    //     case 7:
+    //     break;
+    //     case 8:
+    //     break;
+    //     case 9:
+    //     break;
+    //     case 10:
+    //     default: "Please select product by ID."
+    
+    // }
+    
+    
+    
+    
+}; 
+
+// ex from class songs:
+// var query = "SELECT item_id, stock_quantity FROM bamazondb.products WHERE ?";
+//  connection.query(query, { artist: answer.artist }
+
+// Function for checking product inventory
+ function checkInventory()  {
+    // I want to use the id that the customer selected;
+     var query = "SELECT item_id, product_name, stock_quantity FROM bamazondb WHERE ?";
+    connection.query(query, { item_id: productSelect})
+    // then I want to check the quantity for that id;
+    if (products.stock_quantity === 0) {
+        console.log("Sorry. We are out of stock for " + products.product_name + ".");
+    } else {
+         makePurchase();
+    }
+}
+
+        
+        
+        // function for making purchase
+         function makePurchase() {
+            // update product table in bam db for a decrease of product amount 
+            let sql = `UPDATE products
+           SET stock_quantity = ?
+           WHERE id = ?`;
+            let data = [stock_quantity - 1, 1];
+            connection.query(sql, data, (error, results, fields) => {
+                if (error){
+                return console.error(error.message);
+                }
+                console.log('Rows affected:', results.affectedRows);
+                });
+ 
+                
+                
+                // calculate total amount of purchase (qty*$amount) and display customer total // function calcTotal(){;
+                var totalCost = products.price * response.quantity_ordered;
+                return console.log(totalCost);
+            } 
+            
+     
+
+//this is a query
+/* connection.query('SELECT * FROM `books` WHERE `author` = "David"', function (error, results, fields) {
+    // error will be an Error if one occurred during the query
+    // results will contain the results of the query
+    // fields will contain information about the returned results fields (if any)
+}); */
+
+// another option for query
+/* connection.query('SELECT * FROM `books` WHERE `author` = ?', ['David'], function (error, results, fields) {
+    // error will be an Error if one occurred during the query
+    // results will contain the results of the query
+    // fields will contain information about the returned results fields (if any)
+}); */
+
+// For updating a column of info after the user makes a purchase:
+// UPDATE [table] SET [column] = '[updated-value]' WHERE [column] = [value]; (My guess is specific field --(if 1 purchased) or - # of products purchased(if more than 1 purchased))
+ function endConnection() {
+ connection.end(function(err) {
+     // The connection is terminated now
+   });
+ }
