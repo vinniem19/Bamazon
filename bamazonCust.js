@@ -70,7 +70,20 @@ inquirer.prompt([
                         if (err) throw err;
 
                         console.log("Transaction completed.");
-                        db.end();
+                        inquirer.prompt({
+                            type: "confirm",
+                            name: "confirm",
+                            message: "Do you wish to make another purchase?"
+                        }).then(function(response){
+                                if (response.confirm === true) {
+                                    selectProduct();
+                                } else {
+                                    console.log("Thank you for your purchase.  Please come again.");
+                    
+                                    db.end();
+                                }
+                        })
+                       // db.end();
                   } )
             }
         }
