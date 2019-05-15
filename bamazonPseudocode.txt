@@ -10,74 +10,6 @@ Function to make purchase of selected product
 
     Function to end connection to database.
 
-    
-
-put this back in bamazonCust.js
-
-     if (productSelect === 1){
-        checkInventory();
-
-        //makePurchase();
-     } else {
-        endConnection();
-    /*
-    if (productSelect === 1) {
-        checkInventory(id);
-    } else if (productSelect === 2) {
-        checkInventory(id);
-    } else if (productSelect === 3) {
-        checkInventory(id);
-    } else if (productSelect === 4) {
-        checkInventory(id);
-    } else if (productSelect === 5) {
-        checkInventory(id);
-    } else if (productSelect === 6) {
-        checkInventory(id);
-    } else if (productSelect === 7) {
-        checkInventory(id);
-    } else if (productSelect === 8) {
-        checkInventory(id);
-    } else if (productSelect === 9) {
-        checkInventory(id);
-    } else if (productSelect === 10) {
-        checkInventory(id);
-    }
-    */
-});
-
-
-// switch  (productSelect) {
-    //     case 1:
-    //     break;
-    //     case 2:
-    //     break;
-    //     case 3:
-    //     break;
-    //     case 4:
-    //     break;
-    //     case 5:
-    //     break;
-    //     case 6:
-    //     break;
-    //     case 7:
-    //     break;
-    //     case 8:
-    //     break;
-    //     case 9:
-    //     break;
-    //     case 10:
-    //     default: "Please select product by ID."
-    
-    // }
-    
-    
-    
-    
-}; 
-
-// ex from class songs:
-// var query = "SELECT item_id, stock_quantity FROM bamazondb.products WHERE ?";
-//  connection.query(query, { artist: answer.artist }
 
 // Function for checking product inventory
  function checkInventory()  {
@@ -92,8 +24,6 @@ put this back in bamazonCust.js
     }
 }
 
-        
-        
         // function for making purchase
          function makePurchase() {
             // update product table in bam db for a decrease of product amount 
